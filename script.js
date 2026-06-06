@@ -8,7 +8,6 @@ const translations = {
     navProjects: "项目",
     navWriting: "写作",
     navContact: "联系",
-    navCooperation: "合作",
     navMenu: "导航",
     portraitPlaceholder: "肖像图片占位",
     imagePlaceholder: "图片占位",
@@ -92,15 +91,6 @@ const translations = {
       "“音乐理论妙妙屋”是我创办微信公众号，我希望能在正式论文发表之外，建立一个更灵活的学术写作空间。这里的写作主要关注音乐现象与学术概念之间的交叉：音乐与媒介、音乐与性别、音乐与权力、音乐与生活、音乐与公共文化。我理解的学术写作不是为了制造高高在上的距离感，而是试图将理论转化为一种可用于观察世界的视角。它更像是一种训练观看方式的过程：当我们学习了某些理论和概念之后，便可以用不同于日常直觉的方式重新理解身边的文化现象。通过这些文章，我希望让非音乐专业的读者也能看到，音乐并不只是娱乐或审美对象，它同样可以揭示社会结构、情感秩序与文化经验的复杂面向。",
     projectsIntro:
       "本页的公共项目主要指陆如音乐工作室正在发展中的音乐田野工作坊。它源于我个人的学习经历：我曾长期苦于缺少系统的田野指导，只能在摸索中学习如何进入现场。因此，我希望通过工作坊的形式，帮助更多音乐专业学生较早接触田野方法，理解音乐研究不只发生在书本和课堂中，具体的地方、人群与声音实践才是真正的源头。音乐田野工作坊不仅面向音乐专业学生，也欢迎对少数民族文化、非遗、地方音乐和田野学习感兴趣的参与者。中国地域广阔，音乐文化资源极为丰富，工作坊主要选择非遗音乐项目与传承人资源，带领参与者进入现场，学习观察、聆听、访谈与记录，并与学术写作辅导结合，帮助学生将田野经验进一步转化为申学、研究计划中的有效材料。未来，这一项目也将逐步扩展到海外田野。",
-    contactFormTitle: "欢迎联系我",
-    contactNameLabel: "姓名",
-    contactEmailLabel: "邮箱",
-    contactMessageLabel: "留言",
-    contactSendLabel: "发送",
-    contactStatusSent: "这个浏览器已经发送过一条消息。",
-    contactStatusOpening: "正在打开你的邮件应用...",
-    contactKicker: "联系",
-    contactTitle: "欢迎交流研究、田野与音乐教育项目",
     footerText: "Ethnomusicology · Fieldwork · Music Education"
   },
   en: {
@@ -112,7 +102,6 @@ const translations = {
     navProjects: "Projects",
     navWriting: "Writing",
     navContact: "Connect With Me",
-    navCooperation: "Cooperation",
     navMenu: "Navigation",
     portraitPlaceholder: "Portrait image placeholder",
     imagePlaceholder: "Image placeholder",
@@ -202,15 +191,6 @@ const translations = {
       "“Music Theory Wonders” is a WeChat public account I founded as a flexible space for academic writing beyond formal journal publication. The essays explore the intersections between musical phenomena and academic concepts: music and media, music and gender, music and power, music and everyday life, and music and public culture.\n\nI do not see academic writing as a way to create distance from readers. Nor should theory remain above everyday experience. For me, theory offers a way of seeing. It helps us notice structures, emotions, and cultural meanings that may otherwise remain invisible.\n\nWriting is therefore a form of training perception. Once we learn certain concepts, we may begin to understand familiar cultural phenomena differently. Through these essays, I hope to show readers beyond the field of music that music is not only entertainment or aesthetic expression. It can also reveal the complex relations between social structures, emotional orders, and cultural experience.",
     projectsIntro:
       "The public projects presented here mainly refer to the music fieldwork workshops currently being developed by LR Music Edu. This project grew out of my own learning experience. During my earlier training, I often struggled with the lack of systematic guidance in fieldwork. I had to learn, step by step, how to enter the field, conduct interviews, observe musical life, and turn experience into research material.\n\nFor this reason, I hope to help more music students encounter fieldwork methods at an earlier stage. Music research does not only take place in books or classrooms. Its sources are also found in specific places, people, sounds, and practices.\n\nThe workshops are designed for music students, but they are also open to participants interested in ethnic minority cultures, intangible cultural heritage, local music, and field-based learning. China is vast, and its musical cultures are exceptionally rich. The workshops focus on intangible cultural heritage music projects and heritage bearers, guiding participants to observe, listen, interview, and document in the field. In combination with academic writing guidance, these workshops also help students transform fieldwork experience into useful materials for academic applications and research proposals. In the future, this project will gradually expand to overseas fieldwork as well.",
-    contactFormTitle: "Get in touch with me!",
-    contactNameLabel: "Name",
-    contactEmailLabel: "Email",
-    contactMessageLabel: "Message",
-    contactSendLabel: "Send",
-    contactStatusSent: "This browser has already sent one message.",
-    contactStatusOpening: "Opening your email app...",
-    contactKicker: "Connect With Me",
-    contactTitle: "Open to conversations on research, fieldwork, and music education projects",
     footerText: "Ethnomusicology · Fieldwork · Music Education"
   }
 };
@@ -218,8 +198,6 @@ const translations = {
 const header = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const yearNode = document.querySelector("[data-year]");
-const contactForm = document.querySelector("[data-contact-form]");
-const contactStatus = document.querySelector("[data-contact-status]");
 const imageViewer = document.querySelector("[data-image-viewer]");
 const imageViewerImage = document.querySelector("[data-image-viewer-image]");
 const imageViewerStage = document.querySelector("[data-image-viewer-stage]");
@@ -233,15 +211,14 @@ const scoreNext = document.querySelector("[data-score-next]");
 const navLinks = [...document.querySelectorAll(".nav-links a")];
 const sectionBackLinks = [...document.querySelectorAll(".section-back")];
 const imageViewerTriggers = [...document.querySelectorAll("[data-image-viewer-trigger]")];
-const standaloneRoutes = new Set(["research", "fieldwork", "teaching", "writing", "projects", "contact"]);
+const standaloneRoutes = new Set(["research", "fieldwork", "teaching", "writing", "projects"]);
 const standaloneRouteLinks = [...document.querySelectorAll("a[href^='#']")].filter((link) =>
   standaloneRoutes.has(link.getAttribute("href").replace("#", ""))
 );
 const sections = navLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
-const routeSections = [...document.querySelectorAll(".home-section, .content-section, .contact-page")];
-const contactSubmissionKey = "fiona-contact-submitted";
+const routeSections = [...document.querySelectorAll(".home-section, .content-section")];
 const scoreImages = Array.from({ length: 10 }, (_, index) => {
   const number = String(index + 1).padStart(2, "0");
   return {
@@ -489,33 +466,6 @@ document.querySelector("[data-image-viewer-reset]")?.addEventListener("click", r
 
 scorePrev?.addEventListener("click", () => showScoreImage(-1));
 scoreNext?.addEventListener("click", () => showScoreImage(1));
-
-contactForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  if (localStorage.getItem(contactSubmissionKey) === "true") {
-    contactStatus.textContent = getMessagePair("contactStatusSent");
-    contactForm.querySelector("button")?.setAttribute("disabled", "true");
-    return;
-  }
-
-  const formData = new FormData(contactForm);
-  const name = String(formData.get("name") || "").trim();
-  const email = String(formData.get("email") || "").trim();
-  const message = String(formData.get("message") || "").trim();
-
-  const subject = encodeURIComponent(`Website message from ${name}`);
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-
-  localStorage.setItem(contactSubmissionKey, "true");
-  contactStatus.textContent = getMessagePair("contactStatusOpening");
-  window.location.href = `mailto:liubeinifiona@outlook.com?subject=${subject}&body=${body}`;
-});
-
-if (localStorage.getItem(contactSubmissionKey) === "true") {
-  contactStatus.textContent = getMessagePair("contactStatusSent");
-  contactForm?.querySelector("button")?.setAttribute("disabled", "true");
-}
 
 yearNode.textContent = new Date().getFullYear();
 renderScoreGallery();
